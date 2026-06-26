@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio DOM 2</title> 
+</head>
+<body>
+    <!-- Formulario para seleccionar un color y un botón "aplicar"-->
+    <form id="color-form">
+        <label for="color">Selecciona un color:</label>
+        <input type="color" id="color" name="color" value="#000000">
+        <br>
+        <button type="submit" onclick="event.preventDefault(); aplicarColor();">Aplicar</button>
+    </form>
+
+    <div id="resultado">
+        <!-- Párrafo lorem ipsum -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+<script>
+    // función para aplicar el color seleccionado
+    function aplicarColor() {
+        const color = document.getElementById('color').value;
+        const resultadoDiv = document.getElementById('resultado');
+        resultadoDiv.style.backgroundColor = color;
+    }
+</script>
+
+</body>
+</html>

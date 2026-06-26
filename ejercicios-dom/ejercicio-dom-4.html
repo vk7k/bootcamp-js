@@ -1,0 +1,29 @@
+<!--En un documento html5, un formulario donde se ingresa texto. al presionar el botón "invertir" se muestra el texto invertido de derecha a izquierda-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio DOM 4</title>
+</head>
+<body>
+    <form id="invertir-form">
+        <label for="texto">Ingresa un texto:</label>
+        <input type="text" id="texto" name="texto" required>
+        <br>
+        <button type="submit" onclick="event.preventDefault(); invertirTexto();">Invertir</button>
+    </form>
+
+    <div id="resultado"></div>
+    <script>
+        
+        function invertirTexto() {
+            const texto = document.getElementById('texto').value;
+            const resultadoDiv = document.getElementById('resultado');
+            const textoInvertido = texto.split('').reverse().join('');
+            resultadoDiv.textContent = textoInvertido;
+        }
+
+    </script>
+</body>
+</html>
