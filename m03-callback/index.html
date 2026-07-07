@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <!--ejecutar las funciones calback de los 3 scripts en la carpeta al presionar un botón-->
+        <script src="01-validar-numero.js"></script>
+        <script src="02-calcular-y-avisar-despues.js"></script>
+        <script src="03-avisar-dependiendo.js"></script>
+
+    </head>
+    <body>
+        <p>Abra la consola para ver los resultados</p>
+        
+        <button onclick="validar_numero(mostrarMensaje)">Validar Número</button>
+        <button onclick="calcular_y_avisar_despues(10, imprimirResultado)">Calcular y Avisar</button>
+        <button onclick="calcular_y_avisar_dependiendo(5, callback_exito, callback_error)">Calcular y Avisar Dependiendo</button>
+    </body>
+</html>
