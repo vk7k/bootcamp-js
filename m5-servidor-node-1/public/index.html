@@ -1,0 +1,44 @@
+<!-- Lista de películas, series y formulario de carga-->
+ <html>
+    <head>
+        <title>Mi Lista de Películas y Series</title>
+        <!-- estilo-->
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <h1>Mi Lista de Películas y Series</h1>
+        <section id="movies">
+            <h2>Películas</h2>
+            <!-- Aquí se mostrarán las películas -->
+             <div id="movies-container"></div>
+        </section>
+        
+        <section id="series">
+            <h2>Series</h2>
+            <!-- Aquí se mostrarán las series -->
+             <div id="series-container"></div>
+        </section>
+
+        <section id="upload">
+            <h2>Cargar Nueva Película o Serie</h2>
+            <form id="upload-form">
+                <label for="type">Tipo:</label>
+                <select id="type" name="type">
+                    <option value="movie">Película</option>
+                    <option value="series">Serie</option>
+                </select><br><br>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="year">Año:</label>
+                <input type="number" id="year" name="year" required><br><br>
+                <label for="seasons">Temporadas (solo para series):</label>
+                <input type="number" id="seasons" name="seasons"><br><br>
+                <label for="director">Director (solo para películas):</label>
+                <input type="text" id="director" name="director"><br><br>
+                <button type="submit">Cargar</button>
+            
+        </section>
+    
+        <script src="/js/main.js"></script>
+    </body>
+ </html>
