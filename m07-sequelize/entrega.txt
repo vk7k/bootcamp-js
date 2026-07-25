@@ -1,0 +1,1 @@
+https://github.com/vk7k/bootcamp-js/tree/main/m07-sequelize
