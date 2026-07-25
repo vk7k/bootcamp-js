@@ -7,10 +7,13 @@
 
 
 // el método define hace esto: (Nombre de la tabla, {columnas}, {opciones})
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/sequelize.js'; // Traemos la conexión
+
 const Pelicula = sequelize.define('Pelicula', {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
   titulo: { type: DataTypes.STRING(150), allowNull: false },
   anio: { type: DataTypes.INTEGER, allowNull: false } 
 }, { tableName: 'peliculas', timestamps: false });
 
-export default Pelicula;
+export default Pelicula; // Exportamos el modelo

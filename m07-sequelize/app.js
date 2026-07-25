@@ -1,22 +1,42 @@
-import { Sequelize, DataTypes } from 'sequelize'; // importa Sequelize y DataTypes desde el paquete 'sequelize'
+// Todo en sus archivitos aparte como niños grandes.
+// importación de bibliotecas/librerías:
 
-// Configura la conexión a la base de datos PostgreSQL
-const sequelize = new Sequelize('postgres://user:pass@localhost:5432/m7'); 
+import express from 'express';
+import cors from 'cors';
+import { sequelize } from './backend/src/models/index.js';
 
-import { DataTypes } from 'sequelize';
-import sequelize from '../config/sequelize.js'; 
+// Importamos los routers ya cocinados
+import peliculasRoutes from './backend/src/routes/peliculas.routes.js';
+import actoresRoutes from './backend/src/routes/actores.routes.js';
+import asignarRoutes from './backend/src/routes/asignar.routes.js';
+
+const app = express();
+
+// Middlewares
+app.use(cors()); // que no bloquee las requests entre back y front
+app.use(express.json()); // hablemos en json
 
 
-//Listar con relaciones (incluye asociados):
+// ==========================================
+// CONEXIÓN DE RUTAS 🤘
+// ==========================================
+// Aquí le decimos a Express qué ruta base usar para cada archivo
+app.use('/peliculas', peliculasRoutes);
+app.use('/actores', actoresRoutes);
+app.use('/asignar-actor', asignarRoutes);
 
-// GET /peliculas
-Pelicula.findAll({ include: { model: Actor, through: { attributes: [] } } });
-// GET /actores
-Actor.findAll({ include: { model: Pelicula, through: { attributes: [] } } });
-Asignar actor a película con transacción:
+// ==========================================
+// INICIAR SERVIDOR Y SINCRONIZAR BD
+// ==========================================
+const PORT = 3000;
 
-// POST /asignar-actor  { pelicula_id, actor_id }
-await sequelize.transaction(async (t) => {
-  await PeliculasActores.create({ pelicula_id, actor_id }, { transaction: t });
-  // aquí podrías hacer más operaciones relacionadas dentro de la misma transacción
-});
+sequelize.sync({ force: false }) 
+    .then(() => {
+        console.log('Tablas sincronizadas en PostgreSQL');
+        app.listen(PORT, () => {
+            console.log(`Servidor Express corriendo en el puerto ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Error al sincronizar la base de datos:', error);
+    });

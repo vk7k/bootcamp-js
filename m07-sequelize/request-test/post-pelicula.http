@@ -1,0 +1,9 @@
+### Esto usa la extensión "REST CLIENT de Huachao Mao, si se instala aparece un botoncito en el VSCODE"
+### Crear Película
+POST http://localhost:3000/peliculas
+Content-Type: application/json
+
+{
+  "titulo": "The Matrix",
+  "anio": 1999
+}

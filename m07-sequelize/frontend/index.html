@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineApp - Sequelize N:M</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .grid { display: flex; gap: 20px; }
+        .card { border: 1px solid #ccc; padding: 15px; width: 30%; }
+        input, button { display: block; margin-bottom: 10px; width: 100%; }
+        pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Gestor de Películas y Actores</h1>
+    
+    <div class="grid">
+        <!-- FORMULARIO PELÍCULAS -->
+        <div class="card">
+            <h3>Crear Película</h3>
+            <input type="text" id="tituloPelicula" placeholder="Título">
+            <input type="number" id="anioPelicula" placeholder="Año">
+            <button onclick="crearPelicula()">Guardar Película</button>
+        </div>
+
+        <!-- FORMULARIO ACTORES -->
+        <div class="card">
+            <h3>Crear Actor</h3>
+            <input type="text" id="nombreActor" placeholder="Nombre completo">
+            <input type="date" id="fechaActor">
+            <button onclick="crearActor()">Guardar Actor</button>
+        </div>
+
+        <!-- FORMULARIO ASIGNACIÓN -->
+        <div class="card">
+            <h3>Asignar Actor a Película</h3>
+            <input type="number" id="idPelicula" placeholder="ID de la Película">
+            <input type="number" id="idActor" placeholder="ID del Actor">
+            <button onclick="asignarActor()">Asignar (Transacción)</button>
+        </div>
+    </div>
+
+    <!-- GET GET GET GET ME-->
+    <hr>
+    <!-- BOTONES PARA GET LO QUE HAY-->
+    <button onclick="listarPeliculas()">Cargar Lista de Películas (GET)</button>
+    <button onclick="listarActores()">Cargar Lista de Actores (GET)</button> 
+    
+    <!-- Mostrar resultado de los GET-->
+    <div id="resultados"><!-- GET actores, películas, lo que quiera mijo--> </div>
+
+    <script>
+        // Todo bien Async
+
+        const API_URL = 'http://localhost:3000'; // mi api :)
+
+        async function crearPelicula() {
+            const titulo = document.getElementById('tituloPelicula').value;
+            const anio = document.getElementById('anioPelicula').value;
+            await fetch(`${API_URL}/peliculas`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ titulo, anio })
+            });
+            alert('Película creada');
+        }
+
+        async function crearActor() {
+            const nombre = document.getElementById('nombreActor').value;
+            const fecha_nacimiento = document.getElementById('fechaActor').value;
+            await fetch(`${API_URL}/actores`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, fecha_nacimiento })
+            });
+            alert('Actor creado');
+        }
+
+        async function asignarActor() {
+            const pelicula_id = document.getElementById('idPelicula').value;
+            const actor_id = document.getElementById('idActor').value;
+            const response = await fetch(`${API_URL}/asignar-actor`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pelicula_id, actor_id })
+            });
+            if(response.ok) alert('Asignación exitosa!');
+            else alert('Error en la asignación');
+        }
+
+        async function listarActores() {
+            try {
+                const response = await fetch(`${API_URL}/actores`);
+                const data = await response.json();
+                // Reutilizamos el mismo div 'resultados' para mostrar el JSON
+                document.getElementById('resultados').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                alert('Error al cargar los actores. ¿Está corriendo el backend?');
+            }
+        }
+
+        async function listarPeliculas() {
+            const response = await fetch(`${API_URL}/peliculas`);
+            const data = await response.json();
+            document.getElementById('resultados').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+    </script>
+</body>
+</html>

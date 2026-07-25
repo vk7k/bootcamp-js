@@ -1,0 +1,2 @@
+### Obtener todas las películas
+GET http://localhost:3000/peliculas
