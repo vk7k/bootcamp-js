@@ -1,0 +1,19 @@
+{
+  "name": "03-subida-imagenes-express-multer",
+  "version": "1.0.0",
+  "description": "subida de imagenes con express y multer en servidor express, con validaciones de tipo mime y tamaño y con interfaz HTML bootstrap",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mime-types": "^3.0.2",
+    "multer": "^2.2.0"
+  }
+}
