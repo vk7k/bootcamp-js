@@ -1,0 +1,191 @@
+/* ==========================================================
+   ACTIVIDAD API REST - RICK AND MORTY
+   Archivo: style.css
+   Descripción:
+   Estilos personalizados para complementar Bootstrap.
+========================================================== */
+
+/* ==========================================================
+   ESTILOS GENERALES
+========================================================== */
+
+body{
+    background-color: #f8f9fa;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==========================================================
+   TÍTULOS
+========================================================== */
+
+h1{
+    font-weight: bold;
+}
+
+h2{
+    font-weight: 600;
+}
+
+/* ==========================================================
+   TARJETAS (Bootstrap Card)
+========================================================== */
+
+.card{
+    border: none;
+    border-radius: 12px;
+}
+
+.card-header{
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ==========================================================
+   TABLA
+========================================================== */
+
+table img{
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid #0d6efd;
+}
+
+/* Efecto al pasar el mouse por una fila */
+
+.table tbody tr:hover{
+    background-color: #eef6ff;
+    cursor: pointer;
+}
+
+/* ==========================================================
+   BOTONES
+========================================================== */
+
+.btn{
+    font-weight: bold;
+}
+
+.btn:hover{
+    transform: scale(1.02);
+    transition: .3s;
+}
+
+/* ==========================================================
+   SELECT
+========================================================== */
+
+select{
+    cursor: pointer;
+}
+
+/* ==========================================================
+   AGRUPACIÓN POR ESPECIE
+========================================================== */
+
+#resultadoAgrupacion h4{
+
+    margin-top:20px;
+
+    padding-bottom:5px;
+
+    color:#198754;
+
+    border-bottom:2px solid #198754;
+
+}
+
+#resultadoAgrupacion ul{
+
+    list-style-type:square;
+
+}
+
+#resultadoAgrupacion li{
+
+    margin-bottom:5px;
+
+}
+
+/* ==========================================================
+   FICHA DEL PERSONAJE
+========================================================== */
+
+#contenedorFicha{
+
+    margin-top:20px;
+
+}
+
+.personaje-card{
+
+    max-width:380px;
+
+    margin:auto;
+
+}
+
+.personaje-card img{
+
+    width:100%;
+
+    border-radius:10px;
+
+}
+
+.personaje-card .card-body{
+
+    text-align:center;
+
+}
+
+/* ==========================================================
+   IMAGEN DE LA TABLA
+========================================================== */
+
+.foto-miniatura{
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+}
+
+/* ==========================================================
+   EFECTO DE SOMBRA
+========================================================== */
+
+.sombra{
+
+    box-shadow:0px 5px 12px rgba(0,0,0,.20);
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:2rem;
+
+    }
+
+    h2{
+
+        font-size:1.5rem;
+
+    }
+
+    table{
+
+        font-size:14px;
+
+    }
+
+}
