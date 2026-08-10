@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio callbacks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: #f5f7fb;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            margin: 8px 8px 8px 0;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicio de funciones callback</h1>
+        <p>Completa cada una de las actividades usando callbacks.</p>
+
+        <button onclick="validar_numero(mostrarValidacion)">1. Validar número</button>
+        <button onclick="calcular_y_avisar_despues(10, mostrarResultadoAsincrono)">2. Suma impares (5 s)</button>
+        <button onclick="calcular_y_avisar_dependiendo(100, mostrarResultadoExitoso, mostrarResultadoError)">3. Sumatorias sucesivas</button>
+
+        <div id="resultado">Aquí aparecerá el resultado.</div>
+    </div>
+
+    <script src="assets/ejercicioCallbacks.js"></script>
+</body>
+</html>
